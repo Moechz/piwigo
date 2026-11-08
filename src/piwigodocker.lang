@@ -1,0 +1,195 @@
+# ===========================================================================
+# Multilingual file for the TOS 7 Docker application "piwigodocker".
+# File name MUST be: <appid>.lang.  23-language superset (14 required by TOS).
+# The App Center picks the text matching the user's device language;
+# untranslated nodes fall back to English, which the official guide allows.
+# Fields: name (app title), auth (upstream author), descript (up to 512
+# chars), release_note, important (up to 512 chars).
+# Translations come from tosapp.json "translations"; run
+#   tosdocker lang <app>          to re-render this file
+#   tosdocker translate <app>     to see what still needs translating
+# ===========================================================================
+[en-us]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[zh-cn]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo 是一个网页照片相册：上传并整理照片到相册、添加标签与描述、控制谁能看到什么，并在清爽的网页界面里浏览。本应用使用 Docker Hub 官方 LinuxServer 镜像并以非 root 用户运行，内置一个 MariaDB，相册、配置与缓存都保存在应用数据目录。"
+release_note = "1. 首个版本：Piwigo 16.4.0，来自 Docker Hub，内置 MariaDB，x86_64 + aarch64 双包，非 root。"
+important    = "打开网页完成 Piwigo 安装向导：数据库主机填 piwigodocker-db，用户 root，密码留空，数据库名 piwigo；然后创建相册管理员。照片保存在 DockerAppData/piwigodocker/galleries，配置/缓存在 .../local 与 .../_data。内部数据库不对外发布，但 root 密码为空——请只在可信局域网使用。需要 DockerEngine。卸载删除数据前请备份整个 piwigodocker 目录。应用通过局域网 HTTP 访问。"
+
+[zh-hk]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo 是一個網頁照片相簿：上傳並整理照片到相簿、加入標籤與描述、控制誰能看到什麼，並在清爽的網頁介面裡瀏覽。本應用使用 Docker Hub 官方 LinuxServer 鏡像並以 non-root 使用者運行，內建一個 MariaDB，相簿、設定與快取都保存在應用資料目錄。"
+release_note = "1. 首個版本：Piwigo 16.4.0，來自 Docker Hub，內建 MariaDB，x86_64 + aarch64 雙包，非 root。"
+important    = "開啟網頁完成 Piwigo 安裝精靈：資料庫主機填 piwigodocker-db，使用者 root，密碼留空，資料庫名 piwigo；然後建立相簿管理員。照片保存在 DockerAppData/piwigodocker/galleries，設定/快取在 .../local 與 .../_data。內部資料庫不對外發佈，但 root 密碼為空——請只在可信局域網使用。需要 DockerEngine。解除安裝刪除資料前請備份整個 piwigodocker 目錄。應用透過局域網 HTTP 存取。"
+
+[fr-fr]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[de-de]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[it-it]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[es-es]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[hu-hu]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[ja-jp]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[ko-kr]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[pl-pl]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[ru-ru]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[tr-tr]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[pt-pt]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[ar-sa]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[cs-cz]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[he-il]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[id-id]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[nb-no]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[nl-nl]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[sv-se]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[th-th]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+
+[vi-vn]
+name         = "Piwigo"
+auth         = "Piwigo"
+version      = "@@VERSION@@"
+descript     = "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder."
+release_note = "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root."
+important    = "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP."
+

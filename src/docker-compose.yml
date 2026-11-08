@@ -1,0 +1,83 @@
+# ===========================================================================
+# Piwigo for TerraMaster TOS 7 (Docker application)
+# ===========================================================================
+# Upstream image : linuxserver/piwigo:version-16.4.0 (Docker Hub, used unmodified)
+#                  -> https://github.com/Piwigo/Piwigo
+#
+# Ports   : host 8023 -> container 8080. The host port is in the
+#           TOS-recommended 8000-19999 range and is not one of the reserved
+#           ports (22/80/443/445/3306/5050/5432/6379/8181/8443).
+# Volumes : all persistent data lives below
+#           /Volume1/DockerAppData/piwigodocker/. The /Volume* wildcard is
+#           deliberately NOT used: the platform does not expand it.
+# TOS rules honoured: Docker Hub image with a fixed tag (never ':latest'),
+#           container_name == application id, restart: unless-stopped,
+#           non-root user, no privileged mode, no network_mode: host, no
+#           cap_add, explicit TZ, a healthcheck on the only service, and
+#           x-app-meta as the last block.
+# Wrapper : the LinuxServer image starts s6 as root and symlinks its writable folders into
+#           /app/www/public. TOS forbids root containers, so this wrapper runs the
+#           unmodified Piwigo code with PHP's built-in server as uid 1000 on port 8080;
+#           local/, _data/, upload/ and galleries/ are mounted writable and persistent.
+# Escaping: docker compose interpolates ${VAR}/$VAR in compose files, so any
+#           '$' meant for the shell is written '$$'.
+#
+# NOTE for maintainers: never place a comment line directly in front of a
+# "- value" sequence item (ports, volumes, ...). The official
+# TOSAppSelfTestingTool parses the compose file line by line; a comment inside
+# a sequence makes it skip its permission sync, the mounted directories stay
+# root-owned and the non-root container cannot write into them.
+
+services:
+  piwigodocker:
+    image: linuxserver/piwigo:version-16.4.0
+    container_name: piwigodocker
+    restart: unless-stopped
+    user: "1000:1000"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        @@ENTRYPOINT_SH@@
+    depends_on:
+      - piwigodocker-db
+    ports:
+      - "8023:8080"
+    environment:
+      TZ: "Asia/Shanghai"
+    volumes:
+      - /Volume1/DockerAppData/piwigodocker/local:/app/www/public/local
+      - /Volume1/DockerAppData/piwigodocker/_data:/app/www/public/_data
+      - /Volume1/DockerAppData/piwigodocker/upload:/app/www/public/upload
+      - /Volume1/DockerAppData/piwigodocker/galleries:/app/www/public/galleries
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -o /dev/null http://127.0.0.1:8080/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  piwigodocker-db:
+    image: mariadb:11.4
+    container_name: piwigodocker-db
+    restart: unless-stopped
+    user: "1000:1000"
+    environment:
+      TZ: "Asia/Shanghai"
+      MARIADB_DATABASE: "piwigo"
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+    volumes:
+      - /Volume1/DockerAppData/piwigodocker/db:/var/lib/mysql
+      - /Volume1/DockerAppData/piwigodocker/run:/run/mysqld
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin -u root ping || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+# TOS App Center web metadata (must be the last block of the file):
+# web.port is the published host port above, protocol is http.
+x-app-meta:
+  web:
+    port: 8023
+    protocol: http

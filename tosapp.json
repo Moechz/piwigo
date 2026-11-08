@@ -1,0 +1,160 @@
+{
+  "app_id": "piwigodocker",
+  "title": "Piwigo",
+  "image": "linuxserver/piwigo:version-16.4.0",
+  "repo_name": "piwigo",
+  "github_repo": "piwigo",
+  "version": "16.4.0-1",
+  "mode": "wrapper",
+  "entrypoint_file": "specs/piwigo-entrypoint.sh",
+  "wrapper_note": "the LinuxServer image starts s6 as root and symlinks its writable folders into\n/app/www/public. TOS forbids root containers, so this wrapper runs the\nunmodified Piwigo code with PHP's built-in server as uid 1000 on port 8080;\nlocal/, _data/, upload/ and galleries/ are mounted writable and persistent.\n",
+  "wrapper_note_readme": "- **Rootless PHP server.** The LinuxServer image starts s6 as root and symlinks writable folders into the app. `src/entrypoint.sh` runs the unmodified Piwigo code with PHP's built-in server as uid 1000 on 8080; `local/`, `_data/`, `upload/` and `galleries/` are mounted writable and persistent.",
+  "container_port": 8080,
+  "host_port": 8023,
+  "category": [
+    "Photography_Video"
+  ],
+  "user": "1000:1000",
+  "depends_on": [
+    "piwigodocker-db"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/piwigodocker/local",
+      "container": "/app/www/public/local"
+    },
+    {
+      "host": "/Volume1/DockerAppData/piwigodocker/_data",
+      "container": "/app/www/public/_data"
+    },
+    {
+      "host": "/Volume1/DockerAppData/piwigodocker/upload",
+      "container": "/app/www/public/upload"
+    },
+    {
+      "host": "/Volume1/DockerAppData/piwigodocker/galleries",
+      "container": "/app/www/public/galleries"
+    }
+  ],
+  "extra_services": [
+    {
+      "name": "piwigodocker-db",
+      "image": "mariadb:11.4",
+      "user": "1000:1000",
+      "volumes": [
+        {
+          "host": "/Volume1/DockerAppData/piwigodocker/db",
+          "container": "/var/lib/mysql"
+        },
+        {
+          "host": "/Volume1/DockerAppData/piwigodocker/run",
+          "container": "/run/mysqld"
+        }
+      ],
+      "environment": {
+        "TZ": "Asia/Shanghai",
+        "MARIADB_DATABASE": "piwigo",
+        "MARIADB_ALLOW_EMPTY_ROOT_PASSWORD": "yes"
+      },
+      "healthcheck": [
+        "CMD-SHELL",
+        "mariadb-admin -u root ping || exit 1"
+      ],
+      "healthcheck_interval": "30s",
+      "healthcheck_timeout": "10s",
+      "healthcheck_retries": 5,
+      "healthcheck_start_period": "30s"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "curl -s -o /dev/null http://127.0.0.1:8080/ || exit 1"
+  ],
+  "healthcheck_interval": "30s",
+  "healthcheck_timeout": "10s",
+  "healthcheck_retries": 3,
+  "healthcheck_start_period": "30s",
+  "auth": "Piwigo",
+  "upstream_url": "https://github.com/Piwigo/Piwigo",
+  "upstream_license": "GPL-2.0",
+  "license": "GPL-2.0",
+  "descript": "Piwigo is a photo gallery for the web: upload and organize pictures into albums, add tags and descriptions, control who can see what, and browse everything from a clean web UI. This package runs the official LinuxServer Docker Hub image as a non-root container together with an internal MariaDB, and keeps the gallery, config and cache in the application data folder.",
+  "release_note": "1. First release: Piwigo 16.4.0 from Docker Hub with an internal MariaDB, x86_64 + aarch64, non-root.",
+  "important": "Open the web UI and complete the Piwigo installer. Database host: piwigodocker-db; user: root; password: empty; database: piwigo. Then create the gallery administrator. Photos are stored in DockerAppData/piwigodocker/galleries; config/cache in .../local and .../_data. The internal database is not published, but uses an empty root password - keep the NAS on a trusted LAN. Needs DockerEngine. Back up the whole piwigodocker folder before uninstalling with data removal. Plain HTTP.",
+  "translations": {
+    "zh-cn": {
+      "descript": "Piwigo 是一个网页照片相册：上传并整理照片到相册、添加标签与描述、控制谁能看到什么，并在清爽的网页界面里浏览。本应用使用 Docker Hub 官方 LinuxServer 镜像并以非 root 用户运行，内置一个 MariaDB，相册、配置与缓存都保存在应用数据目录。",
+      "important": "打开网页完成 Piwigo 安装向导：数据库主机填 piwigodocker-db，用户 root，密码留空，数据库名 piwigo；然后创建相册管理员。照片保存在 DockerAppData/piwigodocker/galleries，配置/缓存在 .../local 与 .../_data。内部数据库不对外发布，但 root 密码为空——请只在可信局域网使用。需要 DockerEngine。卸载删除数据前请备份整个 piwigodocker 目录。应用通过局域网 HTTP 访问。",
+      "release_note": "1. 首个版本：Piwigo 16.4.0，来自 Docker Hub，内置 MariaDB，x86_64 + aarch64 双包，非 root。"
+    },
+    "zh-hk": {
+      "descript": "Piwigo 是一個網頁照片相簿：上傳並整理照片到相簿、加入標籤與描述、控制誰能看到什麼，並在清爽的網頁介面裡瀏覽。本應用使用 Docker Hub 官方 LinuxServer 鏡像並以 non-root 使用者運行，內建一個 MariaDB，相簿、設定與快取都保存在應用資料目錄。",
+      "important": "開啟網頁完成 Piwigo 安裝精靈：資料庫主機填 piwigodocker-db，使用者 root，密碼留空，資料庫名 piwigo；然後建立相簿管理員。照片保存在 DockerAppData/piwigodocker/galleries，設定/快取在 .../local 與 .../_data。內部資料庫不對外發佈，但 root 密碼為空——請只在可信局域網使用。需要 DockerEngine。解除安裝刪除資料前請備份整個 piwigodocker 目錄。應用透過局域網 HTTP 存取。",
+      "release_note": "1. 首個版本：Piwigo 16.4.0，來自 Docker Hub，內建 MariaDB，x86_64 + aarch64 雙包，非 root。"
+    }
+  },
+  "data_notes": "`galleries` is the photo library; `local` holds `config/database.inc.php` and other site-specific files; `_data` holds compiled templates/cache; `upload` is the temporary upload folder. The internal MariaDB stores albums, users and metadata in `db`. Copying the whole `piwigodocker` folder is a complete backup.",
+  "design_notes": [
+    "**Rootless PHP server.** The LinuxServer image runs s6 as root; `src/entrypoint.sh` runs the unmodified Piwigo code with PHP's built-in server as uid 1000 on 8080.",
+    "**Internal MariaDB.** A MariaDB 11.4 sidecar is on the private compose network; only Piwigo publishes a host port. The database uses an empty root password because it is not exposed.",
+    "**Four writable volumes + DB volumes.** `local`, `_data`, `upload`, `galleries`, `db`, `run`.",
+    "**Health check** probes `/` on 8080 (302 redirect to the installer/login page).",
+    "**Fixed image tags**, Docker Hub only, no privileged mode, no host network, no Docker socket."
+  ],
+  "limitations": [
+    "PHP's built-in server is single-threaded. It is fine for a personal/family gallery but not for high-traffic or heavy batch imports.",
+    "The internal MariaDB uses an empty root password. It is only reachable on the compose network, but do not publish the database port or move the app to an untrusted network.",
+    "The installer must be completed manually. Until then, the web UI redirects to `/install.php`.",
+    "Some Piwigo plugins/themes that write into `/app/www/public/plugins` or `/themes` may not persist; the base gallery and admin UI work with the built-in themes.",
+    "Plain HTTP on the LAN; do not expose the published port to the internet without a TLS reverse proxy."
+  ],
+  "runtime_files": [
+    {
+      "path": "local",
+      "purpose": "Piwigo site config, including local/config/database.inc.php",
+      "created": "first run / installer",
+      "growth": "small",
+      "lifecycle": "never overwritten; back it up"
+    },
+    {
+      "path": "_data",
+      "purpose": "compiled templates and cache",
+      "created": "first run",
+      "growth": "bounded by the gallery",
+      "lifecycle": "safe to clean when the app is stopped"
+    },
+    {
+      "path": "upload",
+      "purpose": "temporary upload folder",
+      "created": "first start",
+      "growth": "transient",
+      "lifecycle": "safe to clean"
+    },
+    {
+      "path": "galleries",
+      "purpose": "the photo library",
+      "created": "by the user",
+      "growth": "grows with every photo",
+      "lifecycle": "owned by the user; back it up"
+    },
+    {
+      "path": "db",
+      "purpose": "internal MariaDB data directory",
+      "created": "first start",
+      "growth": "grows with albums/users/metadata",
+      "lifecycle": "never overwritten; back it up"
+    }
+  ],
+  "official": "https://github.com/Piwigo/Piwigo",
+  "help": "https://github.com/Moechz/piwigo/issues",
+  "platform": "x86_64",
+  "publisher": "Moechz",
+  "compose_project": "piwigodocker",
+  "upstream_version": "version-16-4-0",
+  "release_tag_prefix": "v",
+  "docker_socket": false,
+  "group_add": []
+}
