@@ -4,7 +4,7 @@
   "image": "linuxserver/piwigo:version-16.4.0",
   "repo_name": "piwigo",
   "github_repo": "piwigo",
-  "version": "16.4.0-1",
+  "version": "16.4.0-2",
   "mode": "wrapper",
   "entrypoint_file": "specs/piwigo-entrypoint.sh",
   "wrapper_note": "the LinuxServer image starts s6 as root and symlinks its writable folders into\n/app/www/public. TOS forbids root containers, so this wrapper runs the\nunmodified Piwigo code with PHP's built-in server as uid 1000 on port 8080;\nlocal/, _data/, upload/ and galleries/ are mounted writable and persistent.\n",

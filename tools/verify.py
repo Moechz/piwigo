@@ -306,10 +306,21 @@ for host_s, cont_s, proto in ports:
         chk(cont == int(spec["container_port"]),
             f"web container port {cont} != spec container_port {spec['container_port']}")
     chk(proto in ("", "tcp", "udp"), f"unsupported protocol on port {host}")
-for pat, msg in ((r"(?i)(PASSWORD|SECRET|TOKEN|API_KEY):\s*\S",
-                  "compose must not contain a literal secret"),
-                 (r"(?i)user:\s*[\"']?root", "compose must not run as root")):
-    chk(re.search(pat, comp_nc) is None, msg)
+# A literal secret is a non-empty value on a credential-ish key. Flags such as
+# MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes" are switches, not secrets.
+_secret_hits = []
+for _m in re.finditer(
+        r"(?im)^\s*([A-Z0-9_]*(?:PASSWORD|SECRET|TOKEN|API_KEY)[A-Z0-9_]*):\s*(\S.*)$",
+        comp_nc):
+    _key, _val = _m.group(1), _m.group(2).strip().strip("\"'")
+    if "ALLOW" in _key or "EMPTY" in _key:
+        continue
+    if _val.lower() in ("yes", "no", "true", "false", "1", "0", ""):
+        continue
+    _secret_hits.append(f"{_key}={_val[:16]}")
+chk(not _secret_hits, f"compose must not contain a literal secret: {_secret_hits}")
+chk(re.search(r"(?i)user:\s*[\"']?root", comp_nc) is None,
+    "compose must not run as root")
 # Any container-side probe is fine: curl/wget/nc when the image ships one, or an
 # interpreter one-liner (node/python) when it does not.
 chk(re.search(r"^\s+test:\s*\[", comp_nc, re.M) is not None,
